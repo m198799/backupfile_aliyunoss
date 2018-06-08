@@ -33,7 +33,7 @@ func ListDir(dirPath string) (err error)  {
 
 
 func main() {
-	client, err := oss.New("http://oss-cn-beijing.aliyuncs.com", "LTAIzbTqnb3mdOiB", "Yb8yfBEdkHrBYx8bRI7ovyG0ifyg2Q")
+	client, err := oss.New("http://oss-cn-beijing.aliyuncs.com", "", "")
 	if err != nil {
 		handleError(err)
 	}
