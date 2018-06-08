@@ -1,0 +1,8 @@
+hash: 05f57755d3a4c7fed35b6d6531d177baa0d1283a68ab485f6b1e0ca3841921ec
+updated: 2018-06-08T17:44:38.018915014+08:00
+imports:
+- name: github.com/aliyun/aliyun-oss-go-sdk
+  version: 52de7239022ceba47354832fbcc65983aa8d019d
+  subpackages:
+  - oss
+testImports: []
