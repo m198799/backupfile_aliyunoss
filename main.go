@@ -75,6 +75,7 @@ func main() {
 		var table2 string = string([]rune(table1)[:1])
 		if table2 == string(os.PathSeparator){
 			table2 = string([]rune(table1)[1:])
+			fmt.Println("table2:",table2)
 		}
 		err = bucket.PutObjectFromFile(table2,table1)
 		if err != nil{
