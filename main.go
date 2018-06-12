@@ -5,21 +5,34 @@ import (
 	"os"
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"
 	"io/ioutil"
+	"github.com/widuu/goini"
+	"flag"
 )
+
 func handleError(err error) {
 	fmt.Println("Error:", err)
 	os.Exit(-1)
 }
 
+func file_exsit(file string){
+	_, err := os.Stat(file)
+	if os.IsNotExist(err){
+		fmt.Println("file is not exist")
+		os.Exit(-1)
+	}
+	fmt.Println("file path:",file)
+}
+
 var files []string
+
 var PthSep string = string(os.PathSeparator)
 
 func ListDir(dirPath string) (err error)  {
-
 	dir,err := ioutil.ReadDir(dirPath)
 	if err != nil {
 		return nil
 	}
+
 
 	for _ ,fi := range dir {
 		if fi.IsDir(){
@@ -31,9 +44,16 @@ func ListDir(dirPath string) (err error)  {
 	return nil
 }
 
-
 func main() {
-	client, err := oss.New("http://oss-cn-beijing.aliyuncs.com", "", "")
+	var configfile string
+	flag.StringVar(&configfile, "configfile", "./conf.ini", "config file path")
+	flag.Parse()
+	flag.Usage()
+	_, err := os.Stat(configfile)
+	file_exsit(configfile)
+	config := goini.SetConfig(configfile)
+
+	client, err := oss.New(config.GetValue("oss","endpoint"), config.GetValue("oss","accessKeyID"), config.GetValue("oss","accessKeySecret"))
 	if err != nil {
 		handleError(err)
 	}
@@ -45,10 +65,10 @@ func main() {
 		fmt.Println("bucket:", bucket.Name)
 	}
 
-	bucket, err := client.Bucket("pkevin")
-	if err !=nil{
-		handleError(err)
-	}
+//	bucket, err := client.Bucket(config.Oss_bucketName)
+//	if err !=nil{
+//		handleError(err)
+//	}
 //	lsObs, err := bucket.ListObjects()
 
 //	if err != nil{
@@ -67,19 +87,17 @@ func main() {
 	// if err != nil {
 	//    handleError(err)
 	// }
-
-	_ = ListDir("/Users/panxu/Downloads/123")
+	dirPath := config.GetValue("oss","dirPath")
+	file_exsit(dirPath)
+	_ = ListDir(dirPath)
 
 	for _, table1 := range files {
 		fmt.Println(table1)
-		var table2 string = string([]rune(table1)[:1])
-		if table2 == string(os.PathSeparator){
-			table2 = string([]rune(table1)[1:])
-			fmt.Println("table2:",table2)
-		}
-		err = bucket.PutObjectFromFile(table2,table1)
-		if err != nil{
-			handleError(err)
-		}
+		var table2 string = string([]rune(table1)[1:])
+		fmt.Println("table2:",table2)
+//		err = bucket.PutObjectFromFile(table2,table1)
+// 		if err != nil{
+//			handleError(err)
+//		}
 	}
 }

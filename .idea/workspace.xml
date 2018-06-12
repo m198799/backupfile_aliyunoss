@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="445c18ac-9def-4331-a026-bbc428ed40f3" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
@@ -18,8 +18,8 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="35" column="24" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="26" />
+            <state relative-caret-position="182">
+              <caret line="48" column="53" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="53" />
               <folding>
                 <element signature="e#14#82#0" expanded="true" />
               </folding>
@@ -27,11 +27,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="conf.go" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/go/src/github.com/widuu/goini/conf.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="249">
+              <caret line="39" column="28" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="client.go" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/go/src/github.com/aliyun/aliyun-oss-go-sdk/oss/client.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="42" column="19" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="19" />
+            <state relative-caret-position="151">
+              <caret line="78" column="38" selection-start-line="78" selection-start-column="28" selection-end-line="78" selection-end-column="38" />
               <folding>
                 <element signature="e#118#190#0" expanded="true" />
               </folding>
@@ -42,8 +51,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="5" selection-start-column="5" selection-end-column="5" />
+            <state relative-caret-position="15">
+              <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -61,7 +70,7 @@
       <file leaf-file-name="bucket.go" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/go/src/github.com/aliyun/aliyun-oss-go-sdk/oss/bucket.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-152">
+            <state relative-caret-position="950">
               <caret line="92" column="32" selection-start-line="92" selection-start-column="21" selection-end-line="92" selection-end-column="32" />
             </state>
           </provider>
@@ -120,11 +129,6 @@
               <item name="backupfile_aliyunoss" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
-            <path>
-              <item name="backupfile_aliyunoss" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="GOPATH &lt;backupfile_aliyunoss&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -169,13 +173,13 @@
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24305555" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" sideWeight="0.5013889" side_tool="true" visible="true" weight="0.31158456" />
+      <window_info anchor="bottom" id="Event Log" sideWeight="0.50972223" side_tool="true" visible="true" weight="0.31158456" />
       <window_info anchor="right" id="Database" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49930555" weight="0.3288948" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49097222" weight="0.32756326" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" sideWeight="0.49861112" visible="true" weight="0.31158456" />
+      <window_info anchor="bottom" id="Terminal" sideWeight="0.49027777" visible="true" weight="0.31158456" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3994374" />
       <window_info id="Favorites" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -199,43 +203,50 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/go/src/github.com/aliyun/aliyun-oss-go-sdk/oss/bucket.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-152">
-          <caret line="92" column="32" selection-start-line="92" selection-start-column="21" selection-end-line="92" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/glide.yaml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/glide.lock">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.go">
+    <entry file="file://$USER_HOME$/go/src/github.com/aliyun/aliyun-oss-go-sdk/oss/bucket.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="35" column="24" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="26" />
-          <folding>
-            <element signature="e#14#82#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="950">
+          <caret line="92" column="32" selection-start-line="92" selection-start-column="21" selection-end-line="92" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/go/src/github.com/aliyun/aliyun-oss-go-sdk/oss/client.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="19" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="19" />
+        <state relative-caret-position="151">
+          <caret line="78" column="38" selection-start-line="78" selection-start-column="28" selection-end-line="78" selection-end-column="38" />
           <folding>
             <element signature="e#118#190#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/go/src/github.com/widuu/goini/conf.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="39" column="28" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="48" column="53" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="53" />
+          <folding>
+            <element signature="e#14#82#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        <state relative-caret-position="15">
+          <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
         </state>
       </provider>
     </entry>
