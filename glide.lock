@@ -1,8 +1,10 @@
 hash: 05f57755d3a4c7fed35b6d6531d177baa0d1283a68ab485f6b1e0ca3841921ec
-updated: 2018-06-08T17:44:38.018915014+08:00
+updated: 2018-06-12T13:44:15.77244213+08:00
 imports:
 - name: github.com/aliyun/aliyun-oss-go-sdk
   version: 52de7239022ceba47354832fbcc65983aa8d019d
   subpackages:
   - oss
+- name: github.com/widuu/goini
+  version: 56a38bd2e09b9c1cbf849ab1404e74b33a9d9593
 testImports: []
