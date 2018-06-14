@@ -28,9 +28,10 @@ func file_exsit(file string){
 func main() {
 
 	var configfile string
-	flag.StringVar(&configfile, "configfile", "./conf.ini", "config file path")
+	flag.StringVar(&configfile, "configfile", "./online.ini", "config file path")
 	flag.Parse()
-	flag.Usage()
+//	flag.Usage()
+
 	_, err := os.Stat(configfile)
 	file_exsit(configfile)
 	config := goini.SetConfig(configfile)
@@ -72,17 +73,17 @@ func main() {
 	dirPath := config.GetValue("oss", "dirPath")
 	file.ListDir(dirPath)
 	file_exsit(dirPath)
-	expiration_time := config.GetValue("oss","expiration")
-	expiration, err := strconv.ParseInt(expiration_time,10,64)
+	expirationTime := config.GetValue("oss","expirationTime")
+	expTime, err := strconv.ParseInt(expirationTime,10,64)
 	if err != nil{
-		fmt.Println("strconv false")
+		fmt.Println("strconv false\n")
+		fmt.Println("Error:", err)
 		os.Exit(-1)
 	}
-	files, err:= file.ListChangeDir(dirPath,expiration)
-
+	files, err:= file.ListChangeDir(dirPath,expTime)
 
 	for _, table1 := range files {
-		fmt.Println(table1)
+		fmt.Println("table1:",table1)
 		var table2 string = string([]rune(table1)[1:])
 		fmt.Println("table2:",table2)
 		err = bucket.PutObjectFromFile(table2,table1)
@@ -90,4 +91,21 @@ func main() {
 			handleError(err)
 		}
 	}
+	delTimeStr := config.GetValue("oss","delTime")
+	delTime, err := strconv.ParseInt(delTimeStr,10,64)
+	if err != nil{
+		fmt.Println("strconv false\n")
+		fmt.Println("Error:", err)
+		os.Exit(-1)
+	}
+	if delTime == 0 {
+		fmt.Println("do not delete files")
+	}else {
+		if delTime > expTime{
+			file.Delete(dirPath,delTime)
+		}else {
+			fmt.Println("delTime need > expirationTime")
+		}
+	}
+
 }
