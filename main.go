@@ -8,8 +8,8 @@ import (
 	"flag"
 	"github.com/pkevin0909/backupfile_aliyunoss/file"
 	"strconv"
-//	"time"
 	"strings"
+	"time"
 )
 
 func handleError(err error) {
@@ -133,16 +133,19 @@ func main() {
 	}
 	chs := make([]chan int,10)
 	dirPath := config.GetValue("oss", "dirPath")
+	for {
 
-	for i, v := range strings.Split(dirPath, ",") {
-		err:=file_exsit(v)
-		if err != nil{
-			continue;
+		for i, v := range strings.Split(dirPath, ",") {
+			err := file_exsit(v)
+			if err != nil {
+				continue;
+			}
+			chs[i] = make(chan int)
+			go runSyncfiles(v, bucket, config, chs[i])
 		}
-		chs[i] = make(chan int)
-		go runSyncfiles(v,bucket,config,chs[i])
-	}
-	for _, ch := range(chs) {
-		<-ch
+		for _, ch := range (chs) {
+			<-ch
+		}
+		time.Sleep(time.Hour*time.Duration(runTime))
 	}
 }
