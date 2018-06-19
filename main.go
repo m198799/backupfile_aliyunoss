@@ -9,6 +9,7 @@ import (
 	"github.com/pkevin0909/backupfile_aliyunoss/file"
 	"strconv"
 	"time"
+	"strings"
 )
 
 func handleError(err error) {
@@ -71,9 +72,6 @@ func main() {
 	// if err != nil {
 	//    handleError(err)
 	// }
-	dirPath := config.GetValue("oss", "dirPath")
-	file.ListDir(dirPath)
-	file_exsit(dirPath)
 	expirationTime := config.GetValue("oss","expirationTime")
 	expTime, err := strconv.ParseInt(expirationTime,10,64)
 	runTimeOne := config.GetValue("oss","runTime")
@@ -88,35 +86,42 @@ func main() {
 		runTime = 1
 	}
 
-	for {
-		files, err := file.ListChangeDir(dirPath, expTime)
+	dirPath := config.GetValue("oss", "dirPath")
+	fmt.Println(dirPath)
+//	filess := map[int]string{}
+	for _, v := range strings.Split(dirPath, ",") {
 
-		for _, table1 := range files {
-			fmt.Println("table1:", table1)
-			var table2 string = string([]rune(table1)[1:])
-			fmt.Println("table2:", table2)
-			err = bucket.PutObjectFromFile(table2, table1)
+		file_exsit(v)
+		file.ListDir(v)
+		for {
+			files, err := file.ListChangeDir(v, expTime)
+
+			for _, table1 := range files {
+				fmt.Println("table1:", table1)
+				var table2 string = string([]rune(table1)[1:])
+				fmt.Println("table2:", table2)
+				err = bucket.PutObjectFromFile(table2, table1)
+				if err != nil {
+					handleError(err)
+				}
+			}
+			delTimeStr := config.GetValue("oss", "delTime")
+			delTime, err := strconv.ParseInt(delTimeStr, 10, 64)
 			if err != nil {
-				handleError(err)
+				fmt.Println("strconv false\n")
+				fmt.Println("Error:", err)
+				os.Exit(-1)
 			}
-		}
-		delTimeStr := config.GetValue("oss", "delTime")
-		delTime, err := strconv.ParseInt(delTimeStr, 10, 64)
-		if err != nil {
-			fmt.Println("strconv false\n")
-			fmt.Println("Error:", err)
-			os.Exit(-1)
-		}
-		if delTime == 0 {
-			fmt.Println("do not delete files")
-		} else {
-			if delTime > expTime {
-				file.Delete(dirPath, delTime)
+			if delTime == 0 {
+				fmt.Println("do not delete files")
 			} else {
-				fmt.Println("delTime need > expirationTime")
+				if delTime > expTime {
+					file.Delete(v, delTime)
+				} else {
+					fmt.Println("delTime need > expirationTime")
+				}
 			}
+			time.Sleep(time.Hour * time.Duration(runTime))
 		}
-
-		time.Sleep(time.Hour * time.Duration(runTime))
 	}
 }
